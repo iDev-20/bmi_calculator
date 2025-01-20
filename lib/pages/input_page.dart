@@ -1,6 +1,7 @@
 import 'package:bmi_calculator/components/constants.dart';
 import 'package:bmi_calculator/widgets/icon_content.dart';
 import 'package:bmi_calculator/widgets/reusable_card.dart';
+import 'package:bmi_calculator/widgets/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -17,6 +18,8 @@ class InputPageState extends State<InputPage> {
   Gender? selectedGender;
 
   int height = 180;
+  int weight = 60;
+  int age = 20;
 
   //Long method
   // Color maleCardColor = inActiveCardColor;
@@ -98,7 +101,7 @@ class InputPageState extends State<InputPage> {
                   crossAxisAlignment: CrossAxisAlignment.baseline,
                   textBaseline: TextBaseline.alphabetic,
                   children: [
-                    Text(height.toString(), style: kHeightTextStyle),
+                    Text(height.toString(), style: kNumberTextStyle),
                     const Text('cm', style: kLabelTextStyle),
                   ],
                 ),
@@ -127,15 +130,21 @@ class InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          const Expanded(
+          Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ReusableCard(
                   color: kActiveCardColor,
+                  cardChild: bottomCard(
+                    title: 'WEIGHT',
+                    subtitle: weight.toString(),
+                  ),
                 ),
                 ReusableCard(
                   color: kActiveCardColor,
+                  cardChild: bottomCard(
+                      title: 'AGE', subtitle: age.toString(), isAge: true),
                 ),
               ],
             ),
@@ -148,6 +157,47 @@ class InputPageState extends State<InputPage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget bottomCard(
+      {required String title, required String subtitle, bool isAge = false}) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(title, style: kLabelTextStyle),
+        Text(subtitle, style: kNumberTextStyle),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            RoundIconButton(
+              icon: FontAwesomeIcons.minus,
+              onPressed: () {
+                isAge
+                    ? setState(() {
+                        age--;
+                      })
+                    : setState(() {
+                        weight--;
+                      });
+              },
+            ),
+            const SizedBox(width: 10.0),
+            RoundIconButton(
+              icon: FontAwesomeIcons.plus,
+              onPressed: () {
+                isAge
+                    ? setState(() {
+                        age++;
+                      })
+                    : setState(() {
+                        weight++;
+                      });
+              },
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
