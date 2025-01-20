@@ -1,4 +1,4 @@
-import 'package:bmi_calculator/pages/result_page.dart';
+import 'package:bmi_calculator/pages/results_page.dart';
 import 'package:bmi_calculator/resources/calculator_brain.dart';
 import 'package:bmi_calculator/resources/constants.dart';
 import 'package:bmi_calculator/widgets/bottom_button.dart';
