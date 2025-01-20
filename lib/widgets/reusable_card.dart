@@ -12,7 +12,7 @@ class ReusableCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: flex ?? 1,
+      // flex: flex ?? 1,
       child: GestureDetector(
         onTap: onTap,
         child: Container(
