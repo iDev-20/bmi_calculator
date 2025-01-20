@@ -1,4 +1,5 @@
-import 'package:bmi_calculator/components/constants.dart';
+import 'package:bmi_calculator/resources/constants.dart';
+import 'package:bmi_calculator/widgets/bottom_button.dart';
 import 'package:bmi_calculator/widgets/icon_content.dart';
 import 'package:bmi_calculator/widgets/reusable_card.dart';
 import 'package:bmi_calculator/widgets/round_icon_button.dart';
@@ -149,11 +150,11 @@ class InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            height: kBottomContainerHeight,
-            width: double.infinity,
-            margin: const EdgeInsets.only(top: 10),
-            color: kBottomContainerColor,
+          BottomButton(
+            buttonTitle: 'CALCULATE',
+            onTap: () {
+              Navigator.pushNamed(context, '/first');
+            },
           ),
         ],
       ),
